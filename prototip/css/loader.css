@@ -92,7 +92,7 @@
     }
     .loaded #loader-wrapper {
         visibility: hidden;
-		-webkit-transition: all 0.9s ease-out;  
-                transition: all 0.9s ease-out;
+		-webkit-transition: all 1.3s ease-out;  
+                transition: all 1.3s ease-out;
     }
     
