@@ -30,7 +30,7 @@
 			
 	</head>
 	
-<body>
+<body >
 	<!-- PRELOADER 
 		<div id="loader-wrapper">
 			<div id="loader"><div class="sk-spinner sk-spinner-cube-grid"><div class="sk-cube"></div><div class="sk-cube"></div><div class="sk-cube"></div><div class="sk-cube"></div><div class="sk-cube"></div><div class="sk-cube"></div><div class="sk-cube"></div><div class="sk-cube"></div><div class="sk-cube"></div></div></div>
@@ -38,17 +38,17 @@
 		</div>	-->
 		
 	<!-- HEADER -->
-		<section id="header">
+		<section class="header2">
 			
 			<div class="container" >
 				<br><br><br><br>
 				<div class="row">
-					<div class="col-md-6">
+					<div class="col-md-6 col-sm-6">
 						<div class="card" >
 							<form onsubmit="event.preventDefault()" class="box">
 								
 								<h1>Prijava</h1>
-								<p class="text-muted"> Molimo unesite korisničko ime i lozinku!</p> <input type="text" name="" placeholder="Korisničko ime"> <input type="password" name="" placeholder="Lozinka"> <a class="forgot text-muted" href="forget_pass.html">Zaboravili ste lozinku?</a> <input type="submit" name="" value="Prijavi me" href="#">
+								<p class="text-muted"> Molimo unesite korisničko ime i lozinku!</p> <input type="text" name="" placeholder="Korisničko ime" id="username"> <input type="password" name="" placeholder="Lozinka" id="password"> <a class="forgot text-muted" href="forget_pass.html">Zaboravili ste lozinku?</a> <input type="submit" name="" value="Prijavi me" id="submit" onclick="validate()" href="#">
 								
 							</form>
 						</div>
@@ -64,7 +64,7 @@
 			<div class="container">
 				<div class="row text-center">	
 					<p>
-						&copy; 2021 ClearWatersFOC | DESIGN BY <a href="http://https://rti.etf.bg.ac.rs/rti/si3usp">ETF</a>
+						&copy; 2021 PureWatersFOC | DESIGN BY <a href="http://https://rti.etf.bg.ac.rs/rti/si3usp">ETF</a>
 					</p>
 				</div>
 			</div>		
@@ -84,6 +84,35 @@
 		<script src="../js/scrollReveal.min.js"></script>
 		<!-- FUNCTIONS -->
 		<script src="../js/functions.js"></script>
-
+		
+		<script>
+			var attempt = 3; // Variable to count number of attempts.
+			// Below function Executes on click of login button.
+			function validate(){
+				var username = document.getElementById("username").value;
+				var password = document.getElementById("password").value;
+				if ( username == "KORISNIK1" && password == "KORISNIK1"){
+					alert ("Uspešno ste se ulogovali");
+					window.location = "korisnik1.html"; // Redirecting to other page.
+					return false;
+				}
+				else if(username == "KORISNIK2" && password == "KORISNIK2"){
+					alert ("Uspešno ste se ulogovali");
+					window.location = "korisnik2.html"; // Redirecting to other page.
+					return false;
+				}
+				else{
+					attempt --;// Decrementing by one.
+					alert("Imate još "+attempt+" pokušaj;");
+					// Disabling fields after 3 attempts.
+					if( attempt == 0){
+						document.getElementById("username").disabled = true;
+						document.getElementById("password").disabled = true;
+						document.getElementById("submit").disabled = true;
+						return false;
+					}
+				}
+			}
+		</script>
 </body>
 </html>
