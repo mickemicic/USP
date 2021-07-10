@@ -985,6 +985,56 @@
 
   try {
 
+    //radar chart
+    var ctx = document.getElementById("radarChart1");
+    if (ctx) {
+      ctx.height = 140;
+      var myChart = new Chart(ctx, {
+        type: 'radar',
+        data: {
+          labels: ["Sumpor", "Nitrati", "Fosfor", "Živa", "Olovo", "Selen"],
+          defaultFontFamily: 'Poppins',
+          datasets: [
+            {
+              label: "Aktuelna vrednost",
+              data: [47, 59, 66, 22, 7, 33],
+              borderColor: "rgba(0, 123, 255, 0.6)",
+              borderWidth: "1",
+              backgroundColor: "rgba(0, 123, 255, 0.4)"
+            },
+            {
+              label: "Prosečna vrednost",
+              data: [30, 67, 40, 30, 3, 41],
+              borderColor: "rgba(0, 177, 106, 0.6)",
+              borderWidth: "1",
+              backgroundColor: "rgba(30, 130, 76, 0.4)"
+            }
+          ]
+        },
+        options: {
+          legend: {
+            position: 'top',
+            labels: {
+              fontFamily: 'Poppins'
+            }
+
+          },
+          scale: {
+            ticks: {
+              beginAtZero: true,
+              fontFamily: "Poppins"
+            }
+          }
+        }
+      });
+    }
+
+  } catch (error) {
+    console.log(error)
+  }
+
+  try {
+
     //line chart
     var ctx = document.getElementById("lineChart");
     if (ctx) {
