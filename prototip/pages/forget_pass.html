@@ -38,24 +38,35 @@
 		</div>	-->
 		
 	<!-- HEADER -->
-		<section class="header2">
-			
+		<div class="header2">
+			<nav class="navbar navbar-inverse">
+				  <div class="container-fluid">
+					<div class="navbar-header">
+					  <a class="navbar-brand" href="index.html">PureWatersFOC</a>
+					</div>
+					<ul class="nav navbar-nav navbar-right">
+					  <li ><a href="index.html">Početna</a></li>
+					  <li><a href="login.html">Login</a></li>
+					  <li><a href="index.html#saradnici">Sponzori</a></li>
+					  <li><a href="index.html#contact">Kontakt</a></li>
+					</ul>
+				  </div>
+			</nav>
 			<div class="container" >
-				<br><br><br><br>
-				<div class="row">
+				<div class="row" style="padding-top:100px; padding-bottom:200px">
 					<div class="col-md-6">
 						<div class="card" >
 							<form onsubmit="event.preventDefault()" class="box">
 								
 								<h1>Zaboravljena lozinka</h1>
-								<p class="text-muted"> Unesite e-mail vezan za Vaš nalog</p> <input type="text" name="" placeholder="e-mail"> <input type="submit" name="" value="Pošalji" href="#">
+								<p class="text-muted"> Unesite e-mail vezan za Vaš nalog</p> <input type="text" name="" placeholder="e-mail" required oninvalid="this.setCustomValidity('Molimo Vas unesite email')"> <input type="submit" name="" value="Pošalji" href="#">
 								
 							</form>
 						</div>
 					</div>
 				</div>
 			</div>
-		</section>
+		</div>
 	<!-- HEADER ENDS -->
 		
 	

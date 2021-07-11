@@ -232,6 +232,12 @@ section {
 	width: 175px;
 }
 
+#saradnici img {
+	
+	height: 200px;
+	width: 200px;
+}
+
 /* SUBSCRIBE */
 
 #subscribe {
