@@ -34,7 +34,7 @@
 
     <!-- Main CSS-->
     <link href="../css/theme.css" rel="stylesheet" media="all">
-
+    <link href="../css/forma.css" rel="stylesheet" media="all">
 </head>
 
 <body class="animsition">
@@ -193,9 +193,14 @@
                                                     <a href="#" onclick="javascript:SwapDivs('swapper-first')">Aktuelni izveštaji</a>
                                                 </li>
                                                 <li>
-                                                    <a href="#">Istorijat izveštaja</a>
+                                                    <a href="#" onclick="javascript:SwapDivs('swapper-fourth')">Istorijat izveštaja</a>
                                                 </li>
                                             </ul>
+                                        </li>
+
+                                        <li id="aktivno3">
+                                            <a href="#" onclick="javascript:SwapDivs('swapper-third')">
+                                                <i class="fas fa-wrench" ></i>Prijavi problem</a>
                                         </li>
                                     </ul>
                                 </nav>
@@ -253,6 +258,93 @@
 														<canvas id="radarChart1" height="148" style="display: block; width: 222px; height: 148px;" width="222" class="chartjs-render-monitor"></canvas>
 													</div>
 										</div>
+
+                                        <div class="form-style-3" id="swapper-third" style="display:none">
+											<form>
+												<fieldset><legend>Vaš kontakt</legend>
+													<label for="field1"><span>Ime <span class="required">*</span></span><input type="text" class="input-field" name="field1" value="" /></label>
+													<label for="field2"><span>Email <span class="required">*</span></span><input type="email" class="input-field" name="field2" value="" /></label>
+													<label for="field3"><span>Telefon <span class="required">*</span></span><input type="text" class="input-field" name="field3" value="" /></label>
+													<label for="field4"><span>Razlog</span><select name="field4" class="select-field">
+													<option value="Pitanje">Pitanje</option>
+													<option value="Sugestija">Sugestija</option>
+													<option value="Problem">Problem</option>
+													<option value="Drugo">Drugo</option>
+													</select></label>
+												</fieldset>
+												<fieldset><legend>Poruka</legend>
+													<label for="field6"><span>Poruka <span class="required">*</span></span><textarea name="field6" class="textarea-field"></textarea></label>
+													<label><span> </span><input type="submit" value="Pošalji" /></label>
+												</fieldset>
+											</form>
+										</div>
+
+
+                                        <div class="form-style-3" id="swapper-fourth" style="display:none">
+											<div class="table-responsive table--no-card m-b-40">
+                                                <table class="table table-borderless table-striped table-earning">
+                                                    <thead>
+                                                        <tr>
+                                                            <th>Datum</th>
+                                                            <th>Broj izveštaja</th>
+                                                            <th>Filter</th>
+                                                            <th class="text-right">Stepen prioriteta</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        <tr>
+                                                            <td>2021-09-29 05:57</td>
+                                                            <td>100398</td>
+                                                            <td>Severni vodotok</td>
+                                                            <td class="text-right">I</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>2021-09-28 01:22</td>
+                                                            <td>100397</td>
+                                                            <td>Južni vodotok</td>
+                                                            <td class="text-right">IV</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>2021-09-27 02:12</td>
+                                                            <td>100396</td>
+                                                            <td>Zapadni vodotok</td>
+                                                            <td class="text-right">III</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>2021-09-26 23:06</td>
+                                                            <td>100395</td>
+                                                            <td>Centralni slivnik</td>
+                                                            <td class="text-right">V</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>2021-09-25 19:03</td>
+                                                            <td>100393</td>
+                                                            <td>Centrala Istok 2</td>
+                                                            <td class="text-right">II</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>2021-09-29 05:57</td>
+                                                            <td>100392</td>
+                                                            <td>Južni slivnik 4</td>
+                                                            <td class="text-right">II</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>2021-09-24 19:10</td>
+                                                            <td>100391</td>
+                                                            <td>Južni vodotok</td>
+                                                            <td class="text-right">III</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>2021-09-22 00:43</td>
+                                                            <td>100393</td>
+                                                            <td>Zapadni vodotok</td>
+                                                            <td class="text-right">I</td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+										</div>
+
 										
 										
 										
@@ -308,23 +400,51 @@
 														function SwapDivs(d){
 															d1 = document.getElementById("swapper-first");
 															d2 = document.getElementById("swapper-second");
+                                                            d3 = document.getElementById("swapper-third");
+                                                            d4 = document.getElementById("swapper-fourth");
 															dd = document.getElementById(d);
 															
 															div1 = document.getElementById("aktivno1");
 															div2 = document.getElementById("aktivno2");
+                                                            div3 = document.getElementById("aktivno3")
 													
 															if(dd == d1 && d1.style.display!="block"){
 																d1.style.display = "block";
 																d2.style.display = "none";
+                                                                d3.style.display = "none";
+                                                                d4.style.display = "none";
 																div1.className = div1.className.replace("active ", "");
 																div2.className = div2.className.replace("has-sub", "active has-sub");
+                                                                div3.className = div3.className.replace("active", "");
 															}
 															else if(dd == d2 && d2.style.display!="block"){
 																d1.style.display = "none";
 																d2.style.display = "block";
+                                                                d3.style.display = "none";
+                                                                d4.style.display = "none";
 																div1.className = div1.className.replace("has-sub", "active has-sub");
 																div2.className = div2.className.replace("active ", "");
+                                                                div3.className = div3.className.replace("active", "");
 															}
+                                                            else if(dd == d3 && d3.style.display!="block"){
+																d1.style.display = "none";
+																d2.style.display = "none";
+                                                                d3.style.display = "block";
+                                                                d4.style.display = "none";
+																div1.className = div1.className.replace("active", "");
+																div2.className = div2.className.replace("active ", "");
+                                                                div3.className = "active";
+															}
+                                                            else if(dd == d4 && d4.style.display!="block"){
+																d1.style.display = "none";
+																d2.style.display = "none";
+                                                                d3.style.display = "none";
+                                                                d4.style.display = "block";
+																div1.className = div1.className.replace("active ", "");
+																div2.className = div2.className.replace("has-sub", "active has-sub");
+                                                                div3.className = div3.className.replace("active", "");
+															}
+
 														}
 	</script>
 	
