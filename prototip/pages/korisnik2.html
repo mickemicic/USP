@@ -77,10 +77,6 @@
                                     <div class="account-dropdown__body">
                                         <div class="account-dropdown__item">
                                             <a href="#">
-                                                <i class="zmdi zmdi-account"></i>Nalog</a>
-                                        </div>
-                                        <div class="account-dropdown__item">
-                                            <a href="#">
                                                 <i class="zmdi zmdi-settings"></i>Podešavanja</a>
                                         </div>
                                     </div>
@@ -106,7 +102,7 @@
                             <div class="au-breadcrumb-left">
                                 <span class="au-breadcrumb-span">Ovde ste:</span>
                                 <ul class="list-unstyled list-inline au-breadcrumb__list">
-                                    <li class="list-inline-item ">
+                                    <li class="list-inline-item " id="brCrumb">
                                         Početna
                                     </li>
                                 </ul>
@@ -137,7 +133,7 @@
                     <!-- ALERT-->
                     <div class="sufee-alert alert with-close alert-danger alert-dismissible fade show">
 											<span class="badge badge-pill badge-danger">Upozorenje</span>
-											Molimo Vas detaljno posmatrajte stanje filtera i rešetki, ne dozovlite da se zapuše totalno.
+											Zapušenost na filteru Begej - "Severni Vodotok" je prevazišla dozvoljene vrednosti!
 											<button type="button" class="close" data-dismiss="alert" aria-label="Close">
 												<span aria-hidden="true">&times;</span>
 											</button>
@@ -187,11 +183,11 @@
                                                 </span>
                                             </a>
                                             <ul class="list-unstyled navbar__sub-list js-sub-list">
-                                                <li>
-                                                    <a href="#" onclick="javascript:ShowRightElement('switch1')">Aktuelni izveštaji</a>
+                                                <li id="aktivno3">
+                                                    <a href="#" onclick="javascript:ShowRightElement('switch1')">Prosečna začepljenost rešetki</a>
                                                 </li>
-                                                <li>
-                                                    <a href="#">Istorijat izveštaja</a>
+                                                <li id="aktivno6">
+                                                    <a href="#" onclick="javascript:ShowRightElement('switch6')">Istorijat izveštaja</a>
                                                 </li>
                                             </ul>
                                         </li>
@@ -215,39 +211,24 @@
                                     <div class="col-lg-12">
                                         <!-- RECENT REPORT-->
                                         <div class="recent-report3 m-b-40" id="switch1" style="display:block">
-                                            <div class="title-wrap">
-                                                <h3 class="title-3">Skorašnji izveštaji</h3>
-                                                <div class="chart-info-wrap">
-                                                    <div class="chart-note">
-                                                        <span class="dot dot--blue"></span>
-                                                        <span>Dunav</span>
+                                                <div class="title-wrap">
+                                                    <h3 class="title-3">Prosečna začepljenost rešetki</h3>
+                                                </div>
+                                                <div class="filters m-b-55">
+                                                    <div class="rs-select2--dark rs-select2--md m-r-10 rs-select2--border">
+                                                        <select class="js-select2" name="property">
+                                                            <option selected="selected">I kvartal</option>
+                                                            <option value="">II kvartal</option>
+                                                            <option value="">III kvartal</option>
+                                                            <option value="">IV kvartal</option>
+                                                        </select>
+                                                        <div class="dropDownSelect2"></div>
                                                     </div>
-                                                    <div class="chart-note mr-0">
-                                                        <span class="dot dot--green"></span>
-                                                        <span>Sava</span>
-                                                    </div>
                                                 </div>
-                                            </div>
-                                            <div class="filters m-b-55">
-                                                <div class="rs-select2--dark rs-select2--md m-r-10 rs-select2--border">
-                                                    <select class="js-select2" name="property">
-                                                        <option selected="selected">Nitrati (μg)</option>
-                                                        <option value="">Fosfor (ppm)</option>
-                                                    </select>
-                                                    <div class="dropDownSelect2"></div>
+                                            
+                                                <div class="au-card-inner"><div class="chartjs-size-monitor" style="position: absolute; inset: 0px; overflow: hidden; pointer-events: none; visibility: hidden; z-index: -1;"><div class="chartjs-size-monitor-expand" style="position:absolute;left:0;top:0;right:0;bottom:0;overflow:hidden;pointer-events:none;visibility:hidden;z-index:-1;"><div style="position:absolute;width:1000000px;height:1000000px;left:0;top:0"></div></div><div class="chartjs-size-monitor-shrink" style="position:absolute;left:0;top:0;right:0;bottom:0;overflow:hidden;pointer-events:none;visibility:hidden;z-index:-1;"><div style="position:absolute;width:200%;height:200%;left:0; top:0"></div></div></div>
+                                                    <canvas id="barChart1" height="259" style="display: block; width: 389px; height: 259px;" width="389" class="chartjs-render-monitor"></canvas>
                                                 </div>
-                                                <div class="rs-select2--dark rs-select2--sm rs-select2--border">
-                                                    <select class="js-select2 au-select-dark" name="time">
-                                                        <option selected="selected">Dan</option>
-                                                        <option value="">Nedelja</option>
-                                                        <option value="">Mesec</option>
-                                                    </select>
-                                                    <div class="dropDownSelect2"></div>
-                                                </div>
-                                            </div>
-                                            <div class="chart-wrap">
-                                                <canvas id="recent-rep3-chart"></canvas>
-                                            </div>
                                         </div>
 										
 										
@@ -408,6 +389,75 @@
 											</div>
 										</div>
 										
+
+                                        <div class="form-style-3" id="switch6" style="display:none">
+											<div class="table-responsive table--no-card m-b-40">
+                                                <table class="table table-borderless table-striped table-earning">
+                                                    <thead>
+                                                        <tr>
+                                                            <th>Datum</th>
+                                                            <th>Broj izveštaja</th>
+                                                            <th>Rešetka</th>
+                                                            <th class="text-right">Stepen prioriteta</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        <tr>
+                                                            <td>2021-09-29 05:57</td>
+                                                            <td>100398</td>
+                                                            <td>Severni vodotok</td>
+                                                            <td class="text-right">I</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>2021-09-28 01:22</td>
+                                                            <td>100397</td>
+                                                            <td>Južni vodotok</td>
+                                                            <td class="text-right">IV</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>2021-09-27 02:12</td>
+                                                            <td>100396</td>
+                                                            <td>Zapadni vodotok</td>
+                                                            <td class="text-right">III</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>2021-09-26 23:06</td>
+                                                            <td>100395</td>
+                                                            <td>Centralni slivnik</td>
+                                                            <td class="text-right">V</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>2021-09-25 19:03</td>
+                                                            <td>100393</td>
+                                                            <td>Centrala Istok 2</td>
+                                                            <td class="text-right">II</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>2021-09-29 05:57</td>
+                                                            <td>100392</td>
+                                                            <td>Južni slivnik 4</td>
+                                                            <td class="text-right">II</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>2021-09-24 19:10</td>
+                                                            <td>100391</td>
+                                                            <td>Južni vodotok</td>
+                                                            <td class="text-right">III</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>2021-09-22 00:43</td>
+                                                            <td>100393</td>
+                                                            <td>Zapadni vodotok</td>
+                                                            <td class="text-right">I</td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+										</div>
+
+
+
+
                                         <!-- END RECENT REPORT-->
                                     </div>
                                     
@@ -464,24 +514,33 @@
 			div3 = document.getElementById("switch3");
 			div4 = document.getElementById("switch4");
 			div5 = document.getElementById("switch5");
-			
+			div6 = document.getElementById("switch6");
+
 			d1 = document.getElementById("aktivno1");
 			d2 = document.getElementById("aktivno2");
 			d3 = document.getElementById("aktivno3");
 			d4 = document.getElementById("aktivno4");
 			d5 = document.getElementById("aktivno5");
+            d6 = document.getElementById("aktivno6");
+
+            breadCrumb = document.getElementById("brCrumb");
+
 			if (divv==div1 && div1.style.display!="block"){
 				div1.style.display="block";
 				div2.style.display="none";
 				div3.style.display="none";
 				div4.style.display="none";
 				div5.style.display="none";
+                div6.style.display="none";
 				
 				d1.className = d1.className.replace("active ", "has-sub");
 				d2.className = d1.className.replace("active ", "");
 				d3.className = d1.className.replace("has-sub", "active has-sub");
 				d4.className = d1.className.replace("active ", "");
 				d5.className = d5.className.replace("active", "");
+                d6.className = d5.className.replace("active", "");    
+
+                document.getElementById("brCrumb").innerHTML = "Početna / Begej / Začepljenost rešetki";
 			}
 			else if(divv==div2 && div2.style.displa!="block"){
 				div1.style.display="none";
@@ -489,12 +548,16 @@
 				div3.style.display="none";
 				div4.style.display="none";
 				div5.style.display="none";
+                div6.style.display="none";
 				
 				d1.className = d1.className.replace("active ", "has-sub");
 				d2.className = d1.className.replace("active ", "");
 				d3.className = d1.className.replace("active ", "has-sub");
 				d4.className = "active";
 				d5.className = d5.className.replace("active", "");
+                d6.className = d5.className.replace("active", "");
+
+                document.getElementById("brCrumb").innerHTML = "Početna / Begej / Prijavi problem";
 			}
 			else if(divv==div3 && div3.style.display!="block"){
 				div1.style.display="none";
@@ -502,12 +565,16 @@
 				div3.style.display="block";
 				div4.style.display="none";
 				div5.style.display="none";
+                div6.style.display="none";
 				
 				d1.className = d1.className.replace("has-sub", "active has-sub");
 				d2.className = d1.className.replace("active ", "");
 				d3.className = d1.className.replace("active ", "");
 				d4.className = d1.className.replace("active ", "");
 				d5.className = d5.className.replace("active", "");
+                d6.className = d5.className.replace("active", "");
+
+                document.getElementById("brCrumb").innerHTML = "Početna / Begej";
 			}
 			else if(divv==div4 && div4.style.display!="flex"){
 				div1.style.display="none";
@@ -515,12 +582,16 @@
 				div3.style.display="none";
 				div4.style.display="flex";
 				div5.style.display="none";
+                div6.style.display="none";
 				
 				d1.className = d1.className.replace("active ", "");
 				d2.className = "active";
 				d3.className = d1.className.replace("active has-sub", "has-sub");
 				d4.className = d1.className.replace("");
 				d5.className = d5.className.replace("active", "");
+                d6.className = d5.className.replace("active", "");
+
+                document.getElementById("brCrumb").innerHTML = "Početna / Begej / Statistika";
 			}
 			else if(divv==div5 && div5.style.display!="block"){
 				div1.style.display="none";
@@ -528,12 +599,33 @@
 				div3.style.display="none";
 				div4.style.display="none";
 				div5.style.display="block"
+                div6.style.display="none";
 				
 				d1.className = d1.className.replace("active ", "");
 				d2.className = d2.className.replace("active", "");
 				d3.className = d1.className.replace("active has-sub", "has-sub");
 				d4.className = d1.className.replace("");
 				d5.className = "active";
+                d6.className = d5.className.replace("active", "");
+
+                document.getElementById("brCrumb").innerHTML = "Početna / Begej / Daljinsko podešavanje";
+			}
+            else if(divv==div6 && div6.style.display!="block"){
+				div1.style.display="none";
+				div2.style.display="none";
+				div3.style.display="none";
+				div4.style.display="none";
+				div5.style.display="none"
+                div6.style.display="block";
+				
+				d1.className = d1.className.replace("active ", "");
+				d2.className = d2.className.replace("active", "");
+				d3.className = d1.className.replace("active has-sub", "has-sub");
+				d4.className = d1.className.replace("");
+				d5.className = d1.className.replace("");
+                d6.className = "active";
+
+                document.getElementById("brCrumb").innerHTML = "Početna / Begej / Istorijat izveštaja";
 			}
 		}
 	</script>

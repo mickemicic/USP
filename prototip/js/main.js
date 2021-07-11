@@ -933,6 +933,84 @@
     console.log(error);
   }
 
+
+  try {
+    //bar chart
+    var ctx = document.getElementById("barChart1");
+    if (ctx) {
+      ctx.height = 200;
+      var myChart = new Chart(ctx, {
+        type: 'bar',
+        defaultFontFamily: 'Poppins',
+        data: {
+          labels: ["Januar", "Februar", "Mart", "April"],
+          datasets: [
+            {
+              label: "Begej",
+              data: [37, 22, 11, 43],
+              borderColor: "rgba(0, 123, 255, 0.9)",
+              borderWidth: "0",
+              backgroundColor: "rgba(0, 123, 255, 0.5)",
+              fontFamily: "Poppins"
+            },
+            {
+              label: "Dunav",
+              data: [28, 48, 40, 19],
+              borderColor: "rgba(255, 255, 0, 0.9)",
+              borderWidth: "0",
+              backgroundColor: "rgba(255, 255, 0, 0.5)",
+              fontFamily: "Poppins"
+            },
+            {
+              label: "Tamiš",
+              data: [20, 59, 33, 51],
+              borderColor: "rgba(0, 0, 255, 0.9)",
+              borderWidth: "0",
+              backgroundColor: "rgba(0, 0, 255, 0.5)",
+              fontFamily: "Poppins"
+            },
+            {
+              label: "Tisa",
+              data: [61, 50, 80, 91],
+              borderColor: "rgba(255, 0, 255, 0.9)",
+              borderWidth: "0",
+              backgroundColor: "rgba(255, 0, 255, 0.5)",
+              fontFamily: "Poppins"
+            },
+          ]
+        },
+        options: {
+          legend: {
+            position: 'top',
+            labels: {
+              fontFamily: 'Poppins'
+            }
+
+          },
+          scales: {
+            xAxes: [{
+              ticks: {
+                fontFamily: "Poppins"
+
+              }
+            }],
+            yAxes: [{
+              ticks: {
+                beginAtZero: true,
+                fontFamily: "Poppins"
+              }
+            }]
+          }
+        }
+      });
+    }
+
+
+  } catch (error) {
+    console.log(error);
+  }
+
+
   try {
 
     //radar chart
